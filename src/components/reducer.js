@@ -1,5 +1,5 @@
 const initialState = [];
-const HomeReducer = (state = initialState, action) => {
+const RecentlyPlayed = (state = initialState, action) => {
   const {type, payload} = action;
 
   switch (type) {
@@ -11,4 +11,4 @@ const HomeReducer = (state = initialState, action) => {
   }
 };
 
-export default HomeReducer;
+export default RecentlyPlayed;

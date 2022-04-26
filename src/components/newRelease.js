@@ -8,12 +8,26 @@ import {
 } from 'react-native';
 import React from 'react';
 import newrelease from '../assests/data/newRelease';
+import {useDispatch, useSelector} from 'react-redux';
+// import store from '../reducer/store';
 export default function NewRelease() {
+  const dispatch = useDispatch();
+  const data = useSelector(store => store.RecentlyPlayed);
   const renderItem = ({item}) => {
+    const handleAdd = index => {
+      console.log('index is', index);
+      dispatch({type: 'SHOW_DATA', payload: {...newrelease[index]}});
+      console.log(data);
+    };
+
     return (
       <View>
         <View style={styles.imgcon}>
-          <TouchableOpacity activeOpacity={0.8}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() =>
+              handleAdd(newrelease.findIndex(index => index === item))
+            }>
             <Image
               source={item.img}
               style={{
