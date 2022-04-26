@@ -1,7 +1,7 @@
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Home from '../../screens/home';
+import Home from '../../screens/homef/home';
 import MyMusic from '../../screens/myMusic';
 import Podcast from '../../screens/podcast';
 import Wynkstage from '../../screens/wynkstage';

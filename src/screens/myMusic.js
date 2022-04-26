@@ -1,10 +1,19 @@
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 import React from 'react';
-
+import MymusicHeader from '../components/mymusicHeader';
 export default function MyMusic() {
   return (
-    <View>
-      <Text>MyMusic</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <MymusicHeader />
+      </View>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'black',
+    flex: 1,
+  },
+});

@@ -8,17 +8,17 @@ import {
   Alert,
 } from 'react-native';
 import React, {useState} from 'react';
-import Header from '../components/header';
+import Header from '../../components/header';
 import {SliderBox} from 'react-native-image-slider-box';
-import Top_picks from '../assests/data/Top_picks';
-import Mix from '../components/mix';
-import NewRelease from '../components/newRelease';
-import HindiTop from '../components/topHindi';
-import Artist from '../components/artist';
-import Library from '../components/library';
-import MusicLanguage from '../components/musicLanguage';
-import Quality from '../components/quality';
-import QuickSetting from './QuickSetting';
+import Top_picks from '../../assests/data/Top_picks';
+import Mix from '../../components/mix';
+import NewRelease from '../../components/newRelease';
+import HindiTop from '../../components/topHindi';
+import Artist from '../../components/artist';
+import Library from '../../components/library';
+import MusicLanguage from '../../components/musicLanguage';
+import Quality from '../../components/quality';
+import QuickSetting from '../QuickSetting';
 
 export default function Home({navigation}) {
   const [visible, setVisible] = useState(true);
@@ -71,7 +71,7 @@ export default function Home({navigation}) {
           <TouchableOpacity onPress={() => setVisible(false)}>
             <Image
               style={styles.img}
-              source={require('../assests/images/next.png')}
+              source={require('../../assests/images/next.png')}
             />
           </TouchableOpacity>
           <MusicLanguage visible={visible} setVisible={setVisible} />
