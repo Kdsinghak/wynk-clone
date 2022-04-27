@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 
 export default function SplashScreen({navigation}) {
   setTimeout(() => {
-    navigation.replace('TabNavigation');
+    navigation.replace('Drawer');
   }, 1000);
 
   return (

@@ -15,9 +15,7 @@ export default function NewRelease() {
   const data = useSelector(store => store.RecentlyPlayed);
   const renderItem = ({item}) => {
     const handleAdd = index => {
-      console.log('index is', index);
       dispatch({type: 'SHOW_DATA', payload: {...newrelease[index]}});
-      console.log(data);
     };
 
     return (

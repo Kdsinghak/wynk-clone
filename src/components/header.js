@@ -8,12 +8,20 @@ import {
   TextInput,
 } from 'react-native';
 import React from 'react';
+import {DrawerActions} from '@react-navigation/native';
+// import {useNavigation} from '@react-navigation/native';
 
 export default function Header({navigation}) {
+  // const navigation = useNavigation();
+  console.log('navigation', navigation);
   return (
     <SafeAreaView style={styles.headerCon}>
       <View style={styles.imgcon}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            console.log('navigation', navigation);
+            navigation.openDrawer();
+          }}>
           <Image
             style={styles.logo}
             source={require('../assests/images/wynklogo2.png')}

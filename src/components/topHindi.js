@@ -14,25 +14,10 @@ export default function HindiTop() {
       <View>
         <View style={styles.imgcon}>
           <TouchableOpacity activeOpacity={0.8}>
-            <Image
-              source={item.img}
-              style={{
-                height: 110,
-                width: 110,
-                resizeMode: 'contain',
-                borderRadius: 5,
-              }}
-            />
+            <Image source={item.img} style={styles.imgstyle} />
           </TouchableOpacity>
         </View>
-        <Text
-          numberOfLines={0.1}
-          style={{
-            color: 'white',
-            fontSize: 10,
-            paddingTop: 5,
-            fontWeight: 'bold',
-          }}>
+        <Text numberOfLines={0.1} style={styles.txtstyle}>
           {item.song}
         </Text>
       </View>
@@ -64,5 +49,17 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
     top: 10,
+  },
+  imgstyle: {
+    height: 110,
+    width: 110,
+    resizeMode: 'contain',
+    borderRadius: 5,
+  },
+  txtstyle: {
+    color: 'white',
+    fontSize: 10,
+    paddingTop: 5,
+    fontWeight: 'bold',
   },
 });

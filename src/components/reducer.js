@@ -4,7 +4,12 @@ const RecentlyPlayed = (state = initialState, action) => {
 
   switch (type) {
     case 'SHOW_DATA':
-      return [...state, {payload}];
+      // console.log('payload', payload);
+      let i = state.some(item => item.id == payload.id);
+      console.log('state', state);
+      // console.log('i', i);
+      if (!i) return [...state, payload];
+      else return [...state];
 
     default:
       return [...state];
