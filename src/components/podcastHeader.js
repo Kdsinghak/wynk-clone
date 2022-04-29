@@ -9,17 +9,11 @@ import {
 } from 'react-native';
 import React from 'react';
 
-export default function MymusicHeader() {
+export default function PodcastHeader() {
   return (
     <SafeAreaView style={styles.headerCon}>
       <View style={styles.imgcon}>
-        <TouchableOpacity>
-          <View style={styles.txtView}>
-            <Text style={styles.txt}>NN</Text>
-          </View>
-        </TouchableOpacity>
-
-        <Text style={styles.heading}>𝗠𝘆 𝗠𝘂𝘀𝗶𝗰</Text>
+        <Text style={styles.heading}>𝗣𝗼𝗱𝗰𝗮𝘀𝘁𝘀</Text>
       </View>
       <View style={styles.inputcon}>
         <Image
@@ -48,16 +42,7 @@ const styles = StyleSheet.create({
     height: '22%',
     backgroundColor: 'black',
   },
-  txtView: {
-    backgroundColor: '#0066cc',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 90,
-    height: 50,
-    width: 50,
-    left: 20,
-    top: 10,
-  },
+
   txt: {
     color: 'white',
     fontWeight: 'bold',

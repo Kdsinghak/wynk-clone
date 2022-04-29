@@ -9,9 +9,13 @@ import Hellotunes from '../../screens/hellotunes';
 
 const Tab = createBottomTabNavigator();
 
-export default function TabNavigation({navigation}) {
+export default function TabNavigation() {
   return (
-    <Tab.Navigator screenOptions={{tabBarStyle: {backgroundColor: '#060606'}}}>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarHideOnKeyboard: true,
+        tabBarStyle: {backgroundColor: '#060606'},
+      }}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -73,7 +77,7 @@ export default function TabNavigation({navigation}) {
           },
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Wynkstage"
         component={Wynkstage}
         options={{
@@ -87,7 +91,7 @@ export default function TabNavigation({navigation}) {
             );
           },
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 }

@@ -1,10 +1,24 @@
-import {View, Text, StyleSheet, Image, Switch, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Switch,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState} from 'react';
 import SettingHeader from '../components/settingHeader';
-
+import {useNavigation} from '@react-navigation/native';
 export default function Setting() {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const navigation = useNavigation();
+  const [isEnabled1, setIsEnabled1] = useState(false);
+  const [isEnabled2, setIsEnabled2] = useState(false);
+  const toggleSwitch = id => {
+    console.log('id iss', id);
+    if (id === 1) setIsEnabled1(previousState => !previousState);
+    if (id === 2) setIsEnabled2(previousState => !previousState);
+  };
   return (
     <View style={styles.container}>
       <SettingHeader />
@@ -50,10 +64,10 @@ export default function Setting() {
           </View>
           <Switch
             trackColor={{false: '#767577', true: '#002e4d'}}
-            value={isEnabled}
-            thumbColor={isEnabled ? '#006bb3' : '#cccccc'}
+            value={isEnabled1}
+            thumbColor={isEnabled1 ? '#006bb3' : '#cccccc'}
             ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
+            onValueChange={() => toggleSwitch(1)}
             style={[{transform: [{scaleX: 0.8}, {scaleY: 0.8}]}]}
           />
         </View>
@@ -62,10 +76,10 @@ export default function Setting() {
 
           <Switch
             trackColor={{false: '#767577', true: '#002e4d'}}
-            value={isEnabled}
-            thumbColor={isEnabled ? '#006bb3' : '#cccccc'}
+            value={isEnabled2}
+            thumbColor={isEnabled2 ? '#006bb3' : '#cccccc'}
             ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
+            onValueChange={() => toggleSwitch(2)}
             style={[{transform: [{scaleX: 0.8}, {scaleY: 0.8}]}]}
           />
         </View>
@@ -81,10 +95,15 @@ export default function Setting() {
         <View>
           <View style={styles.cardView}>
             <Text style={styles.txt}>My Profile </Text>
-            <Image
-              style={styles.icon}
-              source={require('../assests/images/next.png')}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Login');
+              }}>
+              <Image
+                style={styles.icon}
+                source={require('../assests/images/next.png')}
+              />
+            </TouchableOpacity>
           </View>
           <View style={styles.cardView}>
             <Text style={styles.txt}>Help & Support </Text>
