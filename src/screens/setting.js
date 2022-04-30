@@ -10,15 +10,26 @@ import {
 import React, {useState} from 'react';
 import SettingHeader from '../components/settingHeader';
 import {useNavigation} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 export default function Setting() {
   const navigation = useNavigation();
   const [isEnabled1, setIsEnabled1] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
+  const [nav, setNav] = useState('Login');
+  const data = useSelector(store => store.profileReducer);
+  const [{name}] = data;
+
   const toggleSwitch = id => {
-    console.log('id iss', id);
     if (id === 1) setIsEnabled1(previousState => !previousState);
     if (id === 2) setIsEnabled2(previousState => !previousState);
   };
+
+  const handleNavigation = name => {
+    console.log('name is', name);
+    name === '' ? setNav('Login') : setNav('Profile');
+    navigation.navigate(nav);
+  };
+
   return (
     <View style={styles.container}>
       <SettingHeader />
@@ -97,7 +108,7 @@ export default function Setting() {
             <Text style={styles.txt}>My Profile </Text>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('Login');
+                handleNavigation(name);
               }}>
               <Image
                 style={styles.icon}

@@ -91,7 +91,10 @@ export default function Login() {
           activeOpacity={0.8}
           disabled={isDisable}
           onPress={() => {
-            navigation.navigate('Profile');
+            navigation.navigate('Profile', {
+              number: number,
+              countryData: countryData,
+            });
           }}>
           <Text>Next</Text>
         </TouchableOpacity>

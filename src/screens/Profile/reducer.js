@@ -1,15 +1,22 @@
-initialState = {
-  profile: [],
-};
+const initialState = [
+  {
+    img: require('../../assests/images/profileimg.png'),
+    email: '',
+    name: '',
+    number: '',
+  },
+];
 
 const profileReducer = (state = initialState, action) => {
   const {type, payload} = action;
   switch (type) {
     case 'ADD':
-      return {...state, ...payload};
+      return [{...state, ...payload}];
     case 'SHOW_DATA':
-      return {...state};
+      return [...state, ...payload];
     default:
-      return {...state};
+      return [state];
   }
 };
+
+export default profileReducer;
