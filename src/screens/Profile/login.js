@@ -5,8 +5,6 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  Option,
-  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import Loginheader from '../../components/loginheader';
@@ -19,6 +17,7 @@ export default function Login() {
   const [number, setNumber] = useState('');
   const [color, setColor] = useState('#333333');
   const [isDisable, setIsdisable] = useState(true);
+  const newnumber = countryData.dial_code + '-' + number;
 
   const handleValidNumber = (val, obj) => {
     var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
@@ -92,8 +91,7 @@ export default function Login() {
           disabled={isDisable}
           onPress={() => {
             navigation.navigate('Profile', {
-              number: number,
-              countryData: countryData,
+              number: newnumber,
             });
           }}>
           <Text>Next</Text>

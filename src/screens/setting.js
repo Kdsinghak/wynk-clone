@@ -15,10 +15,10 @@ export default function Setting() {
   const navigation = useNavigation();
   const [isEnabled1, setIsEnabled1] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
-  const [nav, setNav] = useState('Login');
-  const data = useSelector(store => store.profileReducer);
-  const [{name}] = data;
 
+  const data = useSelector(store => store.profileReducer);
+
+  const [{name, number, email}] = data;
   const toggleSwitch = id => {
     if (id === 1) setIsEnabled1(previousState => !previousState);
     if (id === 2) setIsEnabled2(previousState => !previousState);
@@ -26,8 +26,13 @@ export default function Setting() {
 
   const handleNavigation = name => {
     console.log('name is', name);
-    name === '' ? setNav('Login') : setNav('Profile');
-    navigation.navigate(nav);
+    name === ''
+      ? navigation.navigate('Login')
+      : navigation.navigate('Profile', {
+          number: number,
+          _name: name,
+          _email: email,
+        });
   };
 
   return (
@@ -35,37 +40,45 @@ export default function Setting() {
       <SettingHeader />
       <ScrollView style={styles.innercontainer}>
         <Text style={styles.heading}>𝗠𝘂𝘀𝗶𝗰 𝗟𝗶𝘀𝘁𝗲𝗻𝗶𝗻𝗴 𝗣𝗿𝗲𝗳𝗲𝗿𝗲𝗻𝗰𝗲𝘀</Text>
-        <View style={styles.cardView}>
-          <Text style={styles.txt}>Music Language(s)</Text>
-          <Image
-            style={styles.icon}
-            source={require('../assests/images/next.png')}
-          />
-        </View>
-        <View style={styles.cardView}>
-          <Text style={styles.txt}>On Click Behaviour - List</Text>
-          <Image
-            style={styles.icon}
-            source={require('../assests/images/next.png')}
-          />
-        </View>
-        <View style={styles.cardView}>
-          <Text style={styles.txt}>Streaming Quality</Text>
-          <Image
-            style={styles.icon}
-            source={require('../assests/images/next.png')}
-          />
-        </View>
-        <View style={styles.cardView}>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={styles.txt}>Equalizer</Text>
-            <Text style={styles.innertxt}>Adjust audio settings</Text>
+        <TouchableOpacity>
+          <View style={styles.cardView}>
+            <Text style={styles.txt}>Music Language(s)</Text>
+            <Image
+              style={styles.icon}
+              source={require('../assests/images/next.png')}
+            />
           </View>
-          <Image
-            style={styles.icon}
-            source={require('../assests/images/next.png')}
-          />
-        </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.cardView}>
+            <Text style={styles.txt}>On Click Behaviour - List</Text>
+            <Image
+              style={styles.icon}
+              source={require('../assests/images/next.png')}
+            />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.cardView}>
+            <Text style={styles.txt}>Streaming Quality</Text>
+            <Image
+              style={styles.icon}
+              source={require('../assests/images/next.png')}
+            />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={styles.cardView}>
+            <View style={{flexDirection: 'column'}}>
+              <Text style={styles.txt}>Equalizer</Text>
+              <Text style={styles.innertxt}>Adjust audio settings</Text>
+            </View>
+            <Image
+              style={styles.icon}
+              source={require('../assests/images/next.png')}
+            />
+          </View>
+        </TouchableOpacity>
         <View style={styles.cardView}>
           <View style={{flexDirection: 'column'}}>
             <Text style={styles.txt}>Offline songs on slow internet</Text>
@@ -95,41 +108,51 @@ export default function Setting() {
           />
         </View>
         <Text style={styles.heading}>𝐎𝐟𝐟𝐥𝐢𝐧𝐞 𝐌𝐮𝐬𝐢𝐜 𝐩𝐫𝐞𝐟𝐞𝐫𝐞𝐧𝐜𝐞𝐬</Text>
-        <View style={styles.cardView}>
-          <Text style={styles.txt}>Download Quality </Text>
-          <Image
-            style={styles.icon}
-            source={require('../assests/images/next.png')}
-          />
-        </View>
-        <Text style={styles.heading}>𝗣𝗿𝗼𝗳𝗶𝗹𝗲</Text>
-        <View>
+        <TouchableOpacity>
           <View style={styles.cardView}>
-            <Text style={styles.txt}>My Profile </Text>
-            <TouchableOpacity
-              onPress={() => {
-                handleNavigation(name);
-              }}>
+            <Text style={styles.txt}>Download Quality </Text>
+            <Image
+              style={styles.icon}
+              source={require('../assests/images/next.png')}
+            />
+          </View>
+        </TouchableOpacity>
+        <Text style={styles.heading}>𝗣𝗿𝗼𝗳𝗶𝗹𝗲</Text>
+
+        <View>
+          <TouchableOpacity
+            onPress={() => {
+              handleNavigation(name);
+            }}>
+            <View style={styles.cardView}>
+              <Text style={styles.txt}>My Profile </Text>
+              {/* <TouchableOpacity/> */}
+
               <Image
                 style={styles.icon}
                 source={require('../assests/images/next.png')}
               />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.cardView}>
-            <Text style={styles.txt}>Help & Support </Text>
-            <Image
-              style={styles.icon}
-              source={require('../assests/images/next.png')}
-            />
-          </View>
-          <View style={styles.cardView}>
-            <Text style={styles.txt}>Logout</Text>
-            <Image
-              style={styles.icon}
-              source={require('../assests/images/next.png')}
-            />
-          </View>
+              {/* </TouchableOpacity> */}
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.cardView}>
+              <Text style={styles.txt}>Help & Support </Text>
+              <Image
+                style={styles.icon}
+                source={require('../assests/images/next.png')}
+              />
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View style={styles.cardView}>
+              <Text style={styles.txt}>Logout</Text>
+              <Image
+                style={styles.icon}
+                source={require('../assests/images/next.png')}
+              />
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>

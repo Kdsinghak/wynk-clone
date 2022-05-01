@@ -12,10 +12,10 @@ const profileReducer = (state = initialState, action) => {
   switch (type) {
     case 'ADD':
       return [{...state, ...payload}];
-    case 'SHOW_DATA':
-      return [...state, ...payload];
+    // case 'SHOW_DATA':
+    //   return [...state, payload];
     default:
-      return [state];
+      return [...state];
   }
 };
 

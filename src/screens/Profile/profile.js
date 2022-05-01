@@ -15,16 +15,15 @@ export default function Profile({route}) {
   const data = useSelector(store => store.profileReducer);
   const dispatch = useDispatch();
   const [{img}] = data;
-  const {number, countryData} = route.params;
-  const newnumber = countryData.dial_code + '-' + number;
-
+  const {number, _name, _email} = route.params;
+  console.log('route.params', route.params);
   const [Email, setEmail] = useState('');
   const [name, setName] = useState('');
 
   const handleSave = () => {
     dispatch({
       type: 'ADD',
-      payload: {img: img, email: Email, name: name, number: newnumber},
+      payload: {img: img, email: Email, name: name, number: number},
     });
     navigation.navigate('Setting');
   };
@@ -77,8 +76,8 @@ export default function Profile({route}) {
           <Text style={{color: 'grey', paddingBottom: 5}}>Phone Number</Text>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <TextInput
-              value={newnumber}
-              placeholder={newnumber}
+              value={number}
+              placeholder={number}
               placeholderTextColor={'white'}
               style={{
                 color: 'white',
@@ -113,7 +112,7 @@ export default function Profile({route}) {
           <Text style={{color: 'grey', paddingBottom: 5}}>Full Name</Text>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <TextInput
-              value={name}
+              value={_name}
               placeholder={'null null'}
               placeholderTextColor={'white'}
               onChangeText={value => setName(value)}
@@ -151,7 +150,7 @@ export default function Profile({route}) {
           <Text style={{color: 'grey', paddingBottom: 5}}>Email Address</Text>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <TextInput
-              value={Email}
+              value={_email}
               placeholder={'Enter your Email address here'}
               placeholderTextColor={'white'}
               onChangeText={value => setEmail(value)}

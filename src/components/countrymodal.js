@@ -23,7 +23,6 @@ export default function Countrymodal(props) {
       .then(res => res.json())
       .then(resp => {
         setCountry(resp);
-        console.log(resp);
       });
   }, []);
 
