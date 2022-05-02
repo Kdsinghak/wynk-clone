@@ -26,7 +26,7 @@ export default function Setting() {
 
   const handleNavigation = name => {
     console.log('name is', name);
-    name === ''
+    name === '' || name === undefined
       ? navigation.navigate('Login')
       : navigation.navigate('Profile', {
           number: number,
@@ -144,7 +144,10 @@ export default function Setting() {
               />
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Logout');
+            }}>
             <View style={styles.cardView}>
               <Text style={styles.txt}>Logout</Text>
               <Image

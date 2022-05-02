@@ -16,13 +16,14 @@ export default function Profile({route}) {
   const dispatch = useDispatch();
   const [{img}] = data;
   const {number, _name, _email} = route.params;
-  console.log('route.params', route.params);
+
   const [Email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [passwordvalid, setPasswordError] = useState('');
 
   const handleSave = () => {
     dispatch({
-      type: 'ADD',
+      type: 'LOGIN',
       payload: {img: img, email: Email, name: name, number: number},
     });
     navigation.navigate('Setting');
@@ -153,7 +154,9 @@ export default function Profile({route}) {
               value={_email}
               placeholder={'Enter your Email address here'}
               placeholderTextColor={'white'}
-              onChangeText={value => setEmail(value)}
+              onChangeText={value => {
+                setEmail(value);
+              }}
               style={{
                 color: 'white',
                 height: 30,

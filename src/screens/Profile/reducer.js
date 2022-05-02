@@ -10,10 +10,10 @@ const initialState = [
 const profileReducer = (state = initialState, action) => {
   const {type, payload} = action;
   switch (type) {
-    case 'ADD':
+    case 'LOGIN':
       return [{...state, ...payload}];
-    // case 'SHOW_DATA':
-    //   return [...state, payload];
+    case 'LOGOUT':
+      return [{undefined, initialState}];
     default:
       return [...state];
   }

@@ -8,6 +8,7 @@ import DrawerNavigation from './drawerNavigation/drawerNavigation';
 import Login from '../screens/Profile/login';
 import PodcastsCategory from '../screens/podcastsCategory';
 import Profile from '../screens/Profile/profile';
+import Logout from '../screens/Profile/logout';
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
@@ -21,6 +22,7 @@ export default function RootNavigator() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="PodcastsCategory" component={PodcastsCategory} />
         <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Logout" component={Logout} />
       </Stack.Navigator>
     </NavigationContainer>
   );
